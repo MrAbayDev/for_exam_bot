@@ -1,0 +1,20 @@
+{
+    "name": "abdulqayum/for_exam_bot",
+    "description": "for second month exam",
+    "autoload": {
+        "psr-4": {
+            "ForExamBot\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Abdulqayum",
+            "email": "abdulqayumtoraboyevuz@gmail.com"
+        }
+    ],
+    "require": {
+        "ext-pdo": "*",
+        "vlucas/phpdotenv": "^5.6",
+        "guzzlehttp/guzzle": "^7.9"
+    }
+}
