@@ -6,7 +6,7 @@ use ForExamBot\Info;
 
 $token = $_ENV['TOKEN'];
 
-$bot = new Bot($token);
+$bot = new Bot();
 $info = new Info;
 
 $update = json_decode(file_get_contents('php://input'), true);

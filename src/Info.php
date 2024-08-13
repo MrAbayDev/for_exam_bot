@@ -31,4 +31,9 @@ class Info
         $stmt = $this->pdo->query("SELECT * FROM info ORDER BY id DESC LIMIT 1;");
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+    public function getAll(): array
+    {
+        $stmt = $this->pdo->query("SELECT * FROM info;");
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
 }
