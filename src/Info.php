@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ForExamBot;
 use PDO;
+use PDOException;
 
 class Info
 {
@@ -15,15 +16,19 @@ class Info
 
     public function addInfo(string $info): void
     {
-        $stmt = $this->pdo->prepare("INSERT INTO `info` (`info`) VALUES (:info)");
-        $stmt->bindParam(':info', $info);
-        $stmt->execute();
+        try {
+            $stmt = $this->pdo->prepare("INSERT INTO info (info) VALUES (:info)");
+            $stmt->bindParam(':info', $info);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
     }
+
 
     public function getInfo(): array
     {
-        $stmt = $this->pdo->query("SELECT * FROM `info` ORDER BY `info` DESC LIMIT 1");
+        $stmt = $this->pdo->query("SELECT * FROM info ORDER BY id DESC LIMIT 1;");
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-
 }

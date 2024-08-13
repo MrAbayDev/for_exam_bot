@@ -16,6 +16,6 @@ if (isset($update['message'])) {
     $chatId = $message['chat']['id'];
     $text = $message['text'];
     if ($text === "/start") {
-        $bot->handlerStartCommand($chatId,$info);
+        $bot->handlerStartCommand($chatId);
     }
 }

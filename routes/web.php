@@ -1,6 +1,12 @@
 <?php
 declare(strict_types=1);
+
+use ForExamBot\Info;
 use ForExamBot\Router;
-Router::get('/',fn()=>require 'public/home.php');
-Router::post('/addInfo',fn()=>require 'controller/addInfo.php');
-Router::get('/getInfo',fn()=>require 'controller/getInfo.php');
+$addText = new Info();
+if(isset($_POST['text'])){
+    $addText->addInfo($_POST['text']);
+    header('Location: /');
+}
+Router::get('/', fn() => require 'public/home.php');
+Router::get('/', fn() => require 'public/getInfo.php');

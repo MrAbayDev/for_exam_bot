@@ -9,12 +9,10 @@
 <body>
 <div class="container">
     <h1 class="my-4">Send Data to Telegram Bot</h1>
-    <form action="" method="post">
-        <div class="form-group">
-            <label for="message">Message:</label>
-            <input type="text" class="form-control" id="message" name="message" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Send</button>
+    <form action="/" method="post" class="row row-cols-lg-auto py-4">
+        <label for="textInput" class="form-label">Text Input</label>
+        <input type="text" id="textInput" class="form-control" name="text" aria-label="Text input field" required>
+        <button type="submit" class="btn btn-primary">+</button>
     </form>
 </div>
 </body>

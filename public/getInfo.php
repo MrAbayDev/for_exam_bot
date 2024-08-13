@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace ForExamBot;
+
 $info = new Info();
 $infoArray = $info->getInfo();
 ?>
@@ -17,7 +18,6 @@ $infoArray = $info->getInfo();
 <div class="container">
     <h1>Information Page</h1>
     <div class="info-container">
-        <form action="" method="get">
         <?php if (empty($infoArray)): ?>
             <p>No information available.</p>
         <?php else: ?>
@@ -27,7 +27,6 @@ $infoArray = $info->getInfo();
                 <?php endforeach; ?>
             </ul>
         <?php endif; ?>
-            </form>
     </div>
 </div>
 </body>
