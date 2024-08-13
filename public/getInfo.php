@@ -23,7 +23,7 @@ $infoArray = $info->getAll();
         <?php else: ?>
             <ul>
                 <?php foreach ($infoArray as $info): ?>
-                    <li><?php echo htmlspecialchars($info->info); ?></li>
+                    <li><?php echo htmlspecialchars($info->text); ?></li>
                 <?php endforeach; ?>
             </ul>
         <?php endif; ?>

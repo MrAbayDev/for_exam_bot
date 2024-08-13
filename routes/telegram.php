@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+use ForExamBot\User;
 use ForExamBot\Bot;
 use ForExamBot\Info;
 
@@ -8,6 +9,7 @@ $token = $_ENV['TOKEN'];
 
 $bot = new Bot();
 $info = new Info;
+$user = new User();
 
 $update = json_decode(file_get_contents('php://input'), true);
 
@@ -17,5 +19,9 @@ if (isset($update['message'])) {
     $text = $message['text'];
     if ($text === "/start") {
         $bot->handlerStartCommand($chatId);
+        $getUser = $user->getUser($chatId);
+        if (!$getUser) {
+            $user->createUser($chatId);
+        }
     }
 }

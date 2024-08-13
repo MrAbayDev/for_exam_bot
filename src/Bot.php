@@ -15,30 +15,26 @@ class Bot {
     }
 
     public function handlerStartCommand(int $chatId): void {
-        $information = new Info();
-        $infoArray = $information->getInfo();
+        $infoTx = new Info();
+         $infoText = $infoTx->getInfo();
 
-        if (empty($infoArray)) {
-            $infoText = 'No information available.';
-        } else {
-            $infoText = '';
-            foreach ($infoArray as $info) {
-                $infoText .= property_exists($info, 'info') ? $info->info . "\n" : 'No message available' . "\n";
-            }
-        }
+        $this->sendMessage($chatId,$infoText['text']);
+    }
 
-
-        if (trim($infoText) !== '') {
+    public function sendMessage(int $chatId,  $text): void {
+        try {
             $response = $this->client->post('sendMessage', [
                 'json' => [
                     'chat_id' => $chatId,
-                    'text' => $infoText
+                    'text' => $text
                 ]
             ]);
 
             if ($response->getStatusCode() !== 200) {
                 error_log("Failed to send message. Status code: " . $response->getStatusCode());
             }
+        } catch (\Exception $e) {
+            error_log("Error sending message: " . $e->getMessage());
         }
     }
 

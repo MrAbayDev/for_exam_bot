@@ -14,26 +14,25 @@ class Info
         $this->pdo = DB::connect();
     }
 
-    public function addInfo(string $info): void
+    public function addInfo(string $info): array
     {
         try {
-            $stmt = $this->pdo->prepare("INSERT INTO info (info) VALUES (:info)");
+            $stmt = $this->pdo->prepare("INSERT INTO info (text) VALUES (:info)");
             $stmt->bindParam(':info', $info);
             $stmt->execute();
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-
-
     public function getInfo(): array
     {
-        $stmt = $this->pdo->query("SELECT * FROM info ORDER BY id DESC LIMIT 1;");
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+        $stmt = $this->pdo->query("SELECT text FROM info ORDER BY id DESC LIMIT 1;");
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     public function getAll(): array
     {
-        $stmt = $this->pdo->query("SELECT * FROM info;");
+        $stmt = $this->pdo->query("SELECT * FROM info");
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 }
