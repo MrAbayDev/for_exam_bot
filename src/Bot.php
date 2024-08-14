@@ -3,7 +3,6 @@ declare(strict_types=1);
 namespace ForExamBot;
 
 use GuzzleHttp\Client;
-use ForExamBot\Info;
 
 class Bot {
     private string $api;
@@ -29,9 +28,8 @@ class Bot {
                     'text' => $text
                 ]
             ]);
-
             if ($response->getStatusCode() !== 200) {
-                error_log("Failed to send message. Status code: " . $response->getStatusCode());
+                error_log("Failed to send message Status code: " . $response->getStatusCode());
             }
         } catch (\Exception $e) {
             error_log("Error sending message: " . $e->getMessage());

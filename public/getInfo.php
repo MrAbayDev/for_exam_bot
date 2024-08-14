@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace ForExamBot;
 
 $info = new Info();
-$infoArray = $info->getAll();
+$infoArray = $info->getAllInfo();
 ?>
 
 <!DOCTYPE html>

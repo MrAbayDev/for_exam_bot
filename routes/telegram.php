@@ -5,8 +5,6 @@ use ForExamBot\User;
 use ForExamBot\Bot;
 use ForExamBot\Info;
 
-$token = $_ENV['TOKEN'];
-
 $bot = new Bot();
 $info = new Info;
 $user = new User();

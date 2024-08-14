@@ -21,7 +21,7 @@ class Info
             $stmt->bindParam(':info', $info);
             $stmt->execute();
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            echo "Error:" . $e->getMessage();
         }
     return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
@@ -30,7 +30,7 @@ class Info
         $stmt = $this->pdo->query("SELECT text FROM info ORDER BY id DESC LIMIT 1;");
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    public function getAll(): array
+    public function getAllInfo(): array
     {
         $stmt = $this->pdo->query("SELECT * FROM info");
         return $stmt->fetchAll(PDO::FETCH_OBJ);
